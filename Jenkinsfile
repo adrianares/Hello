@@ -7,20 +7,15 @@ node {
         checkout scm
     }
 
-   /* stage('Build image') {
+    stage('Build image') {
         /* This builds the actual image; synonymous to
-         * docker build on the command line 
-
-        app = docker.build("hellonode")
-    }*/
-
-    stage("build") {
-        script {
-            TAG = VersionNumber(versionNumberString: '${BUILD_DATE_FORMATTED, "yyyyMMdd"}-develop-${BUILDS_TODAY}')
+         * docker build on the command line */
+        
+         TAG = VersionNumber(versionNumberString: '${BUILD_DATE_FORMATTED, "yyyyMMdd"}-develop-${BUILDS_TODAY}')
             echo "Building..."
-            sh "docker build -t $IMAGE:$TAG ."
-         }
-      }
+
+        app = docker.build("hellonode" + TAG)
+    }
     
     stage('Test image') {
         /* Ideally, we would run a test framework against our image.
