@@ -14,7 +14,7 @@ node {
          TAG = VersionNumber(versionNumberString: '${BUILD_DATE_FORMATTED, "yyyyMMdd"}-develop-${BUILDS_TODAY}')
             echo "Building..."
 
-        app = docker.build("hellonode" + TAG)
+        app = docker.build("hellonode_" + TAG)
     }
     
     stage('Test image') {
