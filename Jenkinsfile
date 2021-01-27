@@ -11,9 +11,13 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         
-        TAG = VersionNumber(versionNumberString: '${BUILD_DATE_FORMATTED, "yyyyMMdd"}-v-${BUILDS_TODAY}')
+        TAG = VersionNumber(versionNumberString:
+                            versionNumberString :'${BUILD_MONTH}.${BUILDS_TODAY}.${BUILD_NUMBER}', 
+                            projectStartDate : '2017-02-09', 
+                            versionPrefix : 'v1.')
+                            //'${BUILD_DATE_FORMATTED, "yyyyMMdd"}-v-${BUILDS_TODAY}')
                             //${YEARS_SINCE_PROJECT_START,x}-${MONTHS_SINCE_PROJECT_START,xx}-${BUILD_MONTH}')
-            echo "Building..."
+        echo "Building..."
 
         app = docker.build("hellonode_" + TAG)
     }
