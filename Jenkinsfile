@@ -11,8 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         
-        TAG = VersionNumber(versionNumberString:
-                            versionNumberString :'${BUILD_MONTH}.${BUILDS_TODAY}.${BUILD_NUMBER}', 
+        TAG = VersionNumber(versionNumberString :'${BUILD_MONTH}.${BUILDS_TODAY}.${BUILD_NUMBER}', 
                             projectStartDate : '2017-02-09', 
                             versionPrefix : 'v1.')
                             //'${BUILD_DATE_FORMATTED, "yyyyMMdd"}-v-${BUILDS_TODAY}')
